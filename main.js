@@ -1,10 +1,47 @@
-function handleClick() {
+const screen1 = document.querySelector(".screen1")
+const screen2 = document.querySelector(".screen2")
+
+const btnTry = document.querySelector("#btnTry")
+const btnReset = document.querySelector("#btnReset")
+
+const randomNumber = Math.round(Math.random() * 10)
+
+let xAttempts = 1
+
+// Eventos
+btnTry.addEventListener('click', handleTryClick)
+btnReset.addEventListener('click', handleResetClick)
+document.addEventListener('keydown', function(event) {
+    if(event.key == 'Enter') {
+        handleResetClick()
+    }
+})
+
+// Funções
+function handleTryClick(event) {
     event.preventDefault()
 
     // Buscando o elemento que quero tratar através do Id do HTML
     const inputNumber = document.querySelector("#inputNumber")
 
-    // Para capturar o numero inserido no input, é necessário utilizar
-    // o value e não o innetText, pois o input abre e fecha em si mesmo.
-    console.log(inputNumber.value)
+    if(Number(inputNumber.value) == randomNumber) {
+        toggleScreen()
+
+        screen2.querySelector("h2").innerText = `Acertou em ${xAttempts} tentativas`  
+
+    }
+
+    inputNumber.value = ""
+    xAttempts++
+}
+
+function handleResetClick() {
+    toggleScreen()
+    xAttempts = 1
+
+}
+
+function toggleScreen() {
+    screen1.classList.toggle("hide")
+    screen2.classList.toggle("hide")
 }

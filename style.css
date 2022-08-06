@@ -91,17 +91,10 @@ input {
     display: none;
 }
 
-
-.screen2 {
-
-    display: none;
-    /*display: flex;*/
-    flex-direction: column;
-    justify-content: center;
-}
-
 h2 {
     
+    display: flex;
+    justify-content: center;
     font-size: 2.4rem;
     font-weight: normal;
 
@@ -109,6 +102,8 @@ h2 {
 }
 
 .screen2 button {
+    display: flex;
+    margin: 0 auto;
     border-radius: .4rem;
     align-items: center;
     
